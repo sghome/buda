@@ -117,7 +117,7 @@ camera.position.z = 10;
 group.add(camera);
 
 const material1 = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
+  color: 0x1fffff,
   roughness: 0,
   metalness: 0.5,
   envMapIntensity: 10
@@ -126,7 +126,7 @@ const material1 = new THREE.MeshStandardMaterial({
 // Load the model
 const objloader = new OBJLoader();
 objloader.load(
-    'https://raw.githubusercontent.com/miroleon/peace-of-mind/main/assets/buddha.obj',
+    'https://cdn.glitch.me/c536c49d-7661-4fd9-81b8-918d12539028/budha.obj',
  (object) => {
         object.children[0].material = material1;
         object.scale.setScalar( 20 );
