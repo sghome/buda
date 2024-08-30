@@ -93,7 +93,7 @@ const hdrEquirect = new RGBELoader()
 scene.environment = hdrEquirect;
 
 // add Fog to the scene - if too dark go lower with the second value
-scene.fog = new THREE.FogExp2(0x11151c, 0.15);
+scene.fog = new THREE.FogExp2(0x2A6F8E, 0.15);
 
 // create a group to add your camera and object
 // by creating a group, you can can work around the fact that three.js currently doesn't allow to add a rotation to the HDR
@@ -126,7 +126,7 @@ const material1 = new THREE.MeshStandardMaterial({
 // Load the model
 const objloader = new OBJLoader();
 objloader.load(
-    'https://cdn.glitch.me/c536c49d-7661-4fd9-81b8-918d12539028/budaazul.obj',
+    'https://cdn.glitch.me/c536c49d-7661-4fd9-81b8-918d12539028/budazul.obj',
  (object) => {
         object.children[0].material = material1;
         object.scale.setScalar( 20 );
