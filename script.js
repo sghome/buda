@@ -1,3 +1,16 @@
+
+// TR-WP.COM
+
+$(document).ready(function() {
+$("#ackapa").click(function() {
+$(".trwpwhatsappballon").toggle(1000);
+});
+$("#kapatac").click(function() {
+$(".trwpwhatsappballon").toggle(1000);
+});
+});
+
+
 // Get the elements that will be transformed during scrolling
 const textBehind = document.getElementById('text-behind');
 const textFront = document.getElementById('text-front');
@@ -22,14 +35,14 @@ let theta1 = 0;
 
 // This function updates the scale and position of the elements on scroll
 function updateScale() {
-  
+
   // Get the top and bottom position of the canvasRect element relative to the viewport.
   let rect = canvasRect.getBoundingClientRect();
-  
+
   // Calculate the start and end scroll positions relative to the top of the document.
   // window.pageYOffset provides the amount of pixels that the document is currently scrolled vertically.
   // Adding rect.top/rect.bottom converts the relative viewport position to an absolute document position.
-  let startScrollPosition = window.pageYOffset + rect.top; 
+  let startScrollPosition = window.pageYOffset + rect.top;
   let endScrollPosition = window.pageYOffset + rect.bottom;
 
   // The condition checks the following:
@@ -40,24 +53,24 @@ function updateScale() {
     // If either of the conditions is true, we are not viewing the element and thus we should exit (return) from the function early, without updating the parallax effects.
      return;
     }
-  
+
   // The currentScroll value is being adjusted to gradually approach the targetScroll value.
   // This creates a smoother, easing effect rather than directly jumping to the target value.
   currentScroll += (targetScroll - currentScroll) * ease;
-  
+
   let scaleValue1 = 1 + (currentScroll * parallaxScaling1);
   let scaleValue2 = 1 + (currentScroll * parallaxScaling2);
-    
+
   // Use the scaleValue to adjust the transform property for scaling
   textBehind.style.transform = `scale(${scaleValue1})`;
   textFront.style.transform = `scale(${scaleValue1})`;
   textBehindBlur.style.transform = `scale(${scaleValue1})`;
   canvasRect.style.transform = `scale(${scaleValue2})`;
-  
+
   // Modulate theta1 based on the current scrolling offset.
   // This provides a connection between the 2D scrolling experience and the 3D Three.js animations.
   theta1 += currentScroll * parallaxScaling3;
-    
+
   // setTimeout is a way to delay the execution of the function.
   // By calling updateScale with a delay of approximately 1/60th of a second, we're mimicking the behavior of requestAnimationFrame, aiming to update the parallax effect about 60 times per second.
   // This makes the animation smoother by spreading the updates across small time intervals, making transitions less abrupt and more visually appealing.
@@ -126,7 +139,7 @@ const material1 = new THREE.MeshStandardMaterial({
 // Load the model
 const objloader = new OBJLoader();
 objloader.load(
-    'https://raw.githubusercontent.com/miroleon/peace-of-mind/main/assets/buddha.obj',
+    'https://cdn.glitch.me/c536c49d-7661-4fd9-81b8-918d12539028/budazul.obj',
  (object) => {
         object.children[0].material = material1;
         object.scale.setScalar( 20 );
@@ -146,15 +159,15 @@ var update = function() {
   camera.position.x = Math.sin( theta1 ) * 10;
   camera.position.z = Math.cos( theta1 ) * 10;
   camera.position.y = Math.cos( theta1 );
-  
+
   pointlight.position.x = Math.sin( theta1+1 ) * 11;
   pointlight.position.z = Math.cos( theta1+1 ) * 11;
   pointlight.position.y = 2*Math.cos( theta1-3 ) +3;
-  
+
   pointlight2.position.x = -Math.sin( theta1+1 ) * 11;
   pointlight2.position.z = -Math.cos( theta1+1 ) * 11;
   pointlight2.position.y = 2*-Math.cos( theta1-3 ) -6;
-  
+
   // rotate the group to simulate the rotation of the HDR
   group.rotation.y += 0.01;
 
@@ -175,3 +188,13 @@ function animate() {
 }
 
 requestAnimationFrame(animate);
+
+
+
+
+
+
+/////
+
+
+// script.js
